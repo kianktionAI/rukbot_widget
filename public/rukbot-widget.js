@@ -24,9 +24,7 @@
     // Create button
     const btn = document.createElement('div');
     btn.id = 'rukbot-widget-btn';
-    btn.innerHTML = '<img src="https://rukbot-widget.onrender.com/rukbot_icon.png" alt="RUKBOT" style="width:40px;height:40px;" />';
-    document.body.appendChild(btn);
-  
+    btn.innerHTML = '<img src="https://rukbot-widget.onrender.com/rukbot_icon.png" alt="RUKBOT" style="width:40px;height:40px;" />';  
     // Create chat window
     const chat = document.createElement('div');
     chat.id = 'rukbot-widget-chat';
