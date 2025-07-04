@@ -11,7 +11,7 @@
 
     #rukbot-widget-chat {
       position: fixed; bottom: 100px; right: 24px; z-index: 9999;
-      width: 320px; max-width: 90vw; height: 500px; max-height: 80vh;
+      width: 400px; max-width: 95vw; height: 500px; max-height: 80vh;
       background: #fff; border-radius: 16px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.2); 
       flex-direction: column; overflow: hidden; border: 1px solid #ccc;
