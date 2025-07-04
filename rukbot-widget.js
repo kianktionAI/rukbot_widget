@@ -16,6 +16,7 @@
       box-shadow: 0 2px 16px rgba(0,0,0,0.2); 
       flex-direction: column; overflow: hidden; border: 1px solid #ccc;
       display: flex;
+      box-sizing: border-box; /* ✅ Add this line */
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease-in-out;
@@ -29,7 +30,7 @@
 
     @media (max-width: 600px) {
       #rukbot-widget-chat {
-        width: 95vw; right: 2.5vw;
+        width: 90vw; right: 5vw;
         height: 80vh; bottom: 10vh;
       }
     }
