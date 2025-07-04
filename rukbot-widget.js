@@ -11,10 +11,14 @@
 
     #rukbot-widget-chat {
       position: fixed; bottom: 100px; right: 24px; z-index: 9999;
-      width: 370px; max-width: 95vw; height: 500px; max-height: 80vh;
+      width: 320px; max-width: 90vw; height: 500px; max-height: 80vh;
       background: #fff; border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.2); display: none;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2); 
       flex-direction: column; overflow: hidden; border: 1px solid #ccc;
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease-in-out;
     }
 
     #rukbot-close {
@@ -48,14 +52,23 @@
   document.body.appendChild(chat);
 
   // Toggle chat
-  btn.onclick = () => {
-    chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
-  };
+btn.onclick = () => {
+  const isVisible = chat.style.opacity === '1';
+  if (isVisible) {
+    chat.style.opacity = '0';
+    chat.style.pointerEvents = 'none';
+  } else {
+    chat.style.opacity = '1';
+    chat.style.pointerEvents = 'auto';
+  }
+};
 
   // Close button
   document.addEventListener('click', function (e) {
     if (e.target && e.target.id === 'rukbot-close') {
-      chat.style.display = 'none';
+      chat.style.opacity = '0';
+      chat.style.pointerEvents = 'none';
     }
   });
 })();
+
