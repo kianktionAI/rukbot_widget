@@ -4,7 +4,7 @@
   style.innerHTML = `
     #rukbot-widget-btn {
       position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-      background: #FFD600; border-radius: 50%; width: 64px; height: 64px;
+      background: #FFD600; border-radius: 50%; width: 96px; height: 96px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer;
       display: flex; align-items: center; justify-content: center;
     }
@@ -40,7 +40,7 @@
   // Create button
   const btn = document.createElement('div');
   btn.id = 'rukbot-widget-btn';
-  btn.innerHTML = '<img src="https://rukbot-widget.onrender.com/rukbot_icon.png" alt="RUKBOT" style="width:40px;height:40px;" />';
+  btn.innerHTML = '<img src="https://rukbot-widget.onrender.com/rukbot_icon.png" alt="RUKBOT" style="width:60px;height:60px;" />';
   document.body.appendChild(btn);
 
   // Create chat container
