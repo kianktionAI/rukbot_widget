@@ -127,9 +127,12 @@
         body: JSON.stringify({ message: text })
       });
 
-      const replyText = await res.text();
-      if (replyText) botReply = replyText.trim();
-    } catch (_) {}
+      // ⭐⭐⭐ FIXED HERE ⭐⭐⭐
+      botReply = await res.text();
+
+    } catch (err) {
+      botReply = "⚠️ RUKBOT connection error.";
+    }
 
     // bot bubble
     const botBubble = document.createElement("div");
