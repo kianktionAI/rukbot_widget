@@ -1,6 +1,6 @@
 (function () {
   // Inject widget styles
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.innerHTML = `
     #rukbot-widget-btn {
       position: fixed; bottom: 24px; right: 24px; z-index: 9999;
@@ -18,7 +18,6 @@
       overflow: hidden; border: 1px solid #ccc;
       opacity: 0; pointer-events: none;
       transition: opacity 0.25s ease-in-out;
-      font-family: sans-serif;
     }
 
     #rukbot-header {
@@ -44,6 +43,7 @@
       background: #E8F5E9; padding: 10px 14px;
       border-radius: 12px; margin-bottom: 10px;
       max-width: 80%; align-self: flex-start;
+      white-space: pre-wrap;
     }
 
     #rukbot-input-wrap {
@@ -63,15 +63,15 @@
   document.head.appendChild(style);
 
   // Button
-  const btn = document.createElement('div');
-  btn.id = 'rukbot-widget-btn';
-  btn.innerHTML =
-    '<img src="https://rukbot-widget.onrender.com/rukbot_icon.png" style="width:60px;height:60px;" />';
+  const btn = document.createElement("div");
+  btn.id = "rukbot-widget-btn";
+  btn.innerHTML = `<img src="https://rukbot-widget.onrender.com/rukbot_icon.png"
+                      style="width:60px;height:60px;" />`;
   document.body.appendChild(btn);
 
   // Chat window
-  const chat = document.createElement('div');
-  chat.id = 'rukbot-widget-chat';
+  const chat = document.createElement("div");
+  chat.id = "rukbot-widget-chat";
   chat.innerHTML = `
     <div id="rukbot-header">
       <span>RUKBOT</span>
@@ -109,32 +109,28 @@
 
     const messages = document.getElementById("rukbot-messages");
 
-    // user bubble
+    // Add user bubble
     const userBubble = document.createElement("div");
     userBubble.className = "rukbot-user";
     userBubble.textContent = text;
     messages.appendChild(userBubble);
-
     messages.scrollTop = messages.scrollHeight;
 
-    // backend call
-    let botReply = "⚠️ No response from RUKBOT.";
+    // Default reply
+    let botReply = "⚠️ No response received from RUKBOT.";
 
     try {
       const res = await fetch("https://rukbot-backend.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({ message: text }),
       });
 
-      // ⭐⭐⭐ FIXED HERE ⭐⭐⭐
-      botReply = await res.text();
+      const data = await res.text();  // IMPORTANT FIX
+      botReply = data;
+    } catch (err) {}
 
-    } catch (err) {
-      botReply = "⚠️ RUKBOT connection error.";
-    }
-
-    // bot bubble
+    // Add bot bubble
     const botBubble = document.createElement("div");
     botBubble.className = "rukbot-bot";
     botBubble.textContent = botReply;
@@ -147,7 +143,7 @@
   document.getElementById("rukbot-send").onclick = sendMessage;
 
   // Enter key
-  document.getElementById("rukbot-input").addEventListener("keypress", e => {
+  document.getElementById("rukbot-input").addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
   });
 })();
