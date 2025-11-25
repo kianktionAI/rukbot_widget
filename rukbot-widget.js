@@ -127,10 +127,8 @@
         body: JSON.stringify({ message: text })
       });
 
-      const data = await res.json();
-      if (typeof data.response === "string") {
-        botReply = data.response;
-      }
+      const replyText = await res.text();
+      if (replyText) botReply = replyText.trim();
     } catch (_) {}
 
     // bot bubble
