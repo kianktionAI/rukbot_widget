@@ -66,7 +66,7 @@
   const btn = document.createElement("div");
   btn.id = "rukbot-widget-btn";
   btn.innerHTML = `
-    <img src="chat-icon.png" style="width:60px;height:60px;" />
+    <img src="/public/chat-icon.png" style="width:60px;height:60px;" />
   `;
   document.body.appendChild(btn);
 
