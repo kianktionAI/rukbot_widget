@@ -40,7 +40,7 @@
     }
 
     .rukbot-bot {
-      background: #E8F5E9; padding: 10px 14px;
+      background:#f0f0f0; padding: 10px 14px;
       border-radius: 12px; margin-bottom: 10px;
       max-width: 80%; align-self: flex-start;
       white-space: pre-wrap;
@@ -66,8 +66,7 @@
   const btn = document.createElement("div");
   btn.id = "rukbot-widget-btn";
   btn.innerHTML = `
-    <img src="https://rukbot-widget.onrender.com/rukbot_icon.png"
-         style="width:60px;height:60px;" />
+    <img src="chat-icon.png" style="width:60px;height:60px;" />
   `;
   document.body.appendChild(btn);
 
@@ -121,14 +120,13 @@
     let botReply = "⚠️ No response received from RUKBOT.";
 
     try {
-      // 🔥 FIX: Expect plain-text, not JSON
       const res = await fetch("https://rukbot-backend.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text }),
       });
 
-      botReply = await res.text(); // <-- critical fix
+      botReply = await res.text();
     } catch (err) {
       botReply = "⚠️ Connection issue — please try again soon.";
     }
