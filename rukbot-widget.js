@@ -124,7 +124,7 @@
       flex: 1; 
       border: none; 
       padding: 12px;
-      font-size: 14px; 
+      font-size: 16px !important;  /* SAFARI ZOOM FIX */
       outline: none;
     }
 
