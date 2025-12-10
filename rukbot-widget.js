@@ -44,12 +44,13 @@
       #rukbot-widget-chat {
         left: 8px !important;
         right: 8px !important;
-        width: auto !important;
+        width: calc(100vw - 16px) !important;
         max-width: calc(100vw - 16px) !important;
+        bottom: 90px !important;
         height: 70vh !important;
         max-height: 75vh !important;
-        bottom: 90px !important;
         border-radius: 12px !important;
+        overflow-x: hidden !important; /* Prevent sideways expansion on older iPhones */
       }
 
       #rukbot-messages {
@@ -75,43 +76,64 @@
     }
 
     #rukbot-header {
-      padding: 12px; background: #FFD600; font-weight: bold;
-      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px; 
+      background: #FFD600; 
+      font-weight: bold;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
     }
 
     #rukbot-close {
-      cursor: pointer; font-size: 20px; font-weight: bold;
+      cursor: pointer; 
+      font-size: 20px; 
+      font-weight: bold;
     }
 
     #rukbot-messages {
-      padding: 12px; flex: 1; overflow-y: auto;
+      padding: 12px; 
+      flex: 1; 
+      overflow-y: auto;
     }
 
     .rukbot-user {
-      background: #FFF4AA; padding: 10px 14px;
-      border-radius: 12px; margin-bottom: 10px;
-      max-width: 80%; align-self: flex-end;
+      background: #FFF4AA; 
+      padding: 10px 14px;
+      border-radius: 12px; 
+      margin-bottom: 10px;
+      max-width: 80%; 
+      align-self: flex-end;
     }
 
     .rukbot-bot {
-      background:#f0f0f0; padding: 10px 14px;
-      border-radius: 12px; margin-bottom: 10px;
-      max-width: 80%; align-self: flex-start;
+      background:#f0f0f0; 
+      padding: 10px 14px;
+      border-radius: 12px; 
+      margin-bottom: 10px;
+      max-width: 80%; 
+      align-self: flex-start;
       white-space: pre-wrap;
     }
 
     #rukbot-input-wrap {
-      display: flex; border-top: 1px solid #ddd;
+      display: flex; 
+      border-top: 1px solid #ddd;
     }
 
     #rukbot-input {
-      flex: 1; border: none; padding: 12px;
-      font-size: 14px; outline: none;
+      flex: 1; 
+      border: none; 
+      padding: 12px;
+      font-size: 14px; 
+      outline: none;
     }
 
     #rukbot-send {
-      width: 60px; background: #FFD600; border: none;
-      cursor: pointer; font-weight: bold;
+      width: 60px; 
+      background: #FFD600; 
+      border: none;
+      cursor: pointer; 
+      font-weight: bold;
     }
   `;
   document.head.appendChild(style);
@@ -121,7 +143,7 @@
   btn.id = "rukbot-widget-btn";
   btn.innerHTML = `
     <img src="https://rukbot-widget.onrender.com/chat-icon.png"
-     style="width:32px;height:32px;" />
+    style="width:32px;height:32px;" />
   `;
   document.body.appendChild(btn);
 
