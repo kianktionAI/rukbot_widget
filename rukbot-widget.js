@@ -3,21 +3,56 @@
   const style = document.createElement("style");
   style.innerHTML = `
     #rukbot-widget-btn {
-      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-      background: #FFD600; border-radius: 50%; width: 96px; height: 96px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      position: fixed; 
+      bottom: 24px; 
+      right: 24px; 
+      z-index: 9999;
+      background: #FFD600; 
+      border-radius: 50%; 
+      width: 55px;
+      height: 55px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2); 
+      cursor: pointer;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
     }
 
     #rukbot-widget-chat {
-      position: fixed; bottom: 100px; right: 24px; z-index: 9999;
-      width: 360px; max-width: 95vw; height: 500px; max-height: 80vh;
-      background: #fff; border-radius: 16px;
+      position: fixed; 
+      bottom: 100px; 
+      right: 24px; 
+      z-index: 9999;
+      width: 360px; 
+      max-width: 95vw; 
+      height: 500px; 
+      max-height: 80vh;
+      background: #fff; 
+      border-radius: 16px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.2);
-      display: flex; flex-direction: column;
-      overflow: hidden; border: 1px solid #ccc;
-      opacity: 0; pointer-events: none;
+      display: flex; 
+      flex-direction: column;
+      overflow: hidden; 
+      border: 1px solid #ccc;
+      opacity: 0; 
+      pointer-events: none;
       transition: opacity 0.25s ease-in-out;
+    }
+
+    /* MOBILE FIX: Force widget onto screen */
+    @media (max-width: 480px) {
+      #rukbot-widget-chat {
+        left: 8px !important;
+        right: 8px !important;
+        width: auto !important;
+        max-width: calc(100vw - 16px) !important;
+        bottom: 80px !important;
+      }
+
+      #rukbot-widget-btn {
+        right: 16px !important;
+        bottom: 16px !important;
+      }
     }
 
     #rukbot-header {
@@ -67,7 +102,7 @@
   btn.id = "rukbot-widget-btn";
   btn.innerHTML = `
     <img src="https://rukbot-widget.onrender.com/chat-icon.png"
-     style="width:60px;height:60px;" />
+     style="width:32px;height:32px;" />
   `;
   document.body.appendChild(btn);
 
@@ -110,14 +145,12 @@
     input.value = "";
     const messages = document.getElementById("rukbot-messages");
 
-    // Add user bubble
     const userBubble = document.createElement("div");
     userBubble.className = "rukbot-user";
     userBubble.textContent = text;
     messages.appendChild(userBubble);
     messages.scrollTop = messages.scrollHeight;
 
-    // Default fallback
     let botReply = "⚠️ No response received from RUKBOT.";
 
     try {
@@ -132,7 +165,6 @@
       botReply = "⚠️ Connection issue — please try again soon.";
     }
 
-    // Add bot bubble
     const botBubble = document.createElement("div");
     botBubble.className = "rukbot-bot";
     botBubble.textContent = botReply;
@@ -141,10 +173,8 @@
     messages.scrollTop = messages.scrollHeight;
   }
 
-  // Send button
   document.getElementById("rukbot-send").onclick = sendMessage;
 
-  // ENTER key support
   document.getElementById("rukbot-input").addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
   });
