@@ -39,19 +39,38 @@
       transition: opacity 0.25s ease-in-out;
     }
 
-    /* MOBILE FIX: Force widget onto screen */
+    /* UNIVERSAL MOBILE FIX */
     @media (max-width: 480px) {
       #rukbot-widget-chat {
         left: 8px !important;
         right: 8px !important;
         width: auto !important;
         max-width: calc(100vw - 16px) !important;
-        bottom: 80px !important;
+        height: 70vh !important;
+        max-height: 75vh !important;
+        bottom: 90px !important;
+        border-radius: 12px !important;
+      }
+
+      #rukbot-messages {
+        max-height: calc(70vh - 120px) !important;
+        overflow-y: auto !important;
+      }
+
+      #rukbot-input-wrap {
+        height: 50px !important;
       }
 
       #rukbot-widget-btn {
         right: 16px !important;
         bottom: 16px !important;
+        width: 55px !important;
+        height: 55px !important;
+      }
+
+      #rukbot-widget-btn img {
+        width: 32px !important;
+        height: 32px !important;
       }
     }
 
